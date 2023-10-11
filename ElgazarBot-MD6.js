@@ -102,7 +102,7 @@ let xeonyaudio = JSON.parse(fs.readFileSync('./XeonMedia/theme/Media-Store-Karne
 let xeonyimage = JSON.parse(fs.readFileSync('./XeonMedia/theme/Media-Store-Karne-Ke-Liye/image.json'));
 let xeonyvideo = JSON.parse(fs.readFileSync('./XeonMedia/theme/Media-Store-Karne-Ke-Liye/video.json'));
 
-module.exports = ElgazarBot = async (ElgazarBot, m, chatUpdate, store) => {
+module.exports = ElgazarBot = async (NARUTOBot, m, chatUpdate, store) => {
     try {
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 var budy = (typeof m.text == 'string' ? m.text : '')
@@ -111,7 +111,7 @@ const isCmd = body.startsWith(prefix)
 const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
 const args = body.trim().split(/ +/).slice(1)
 const pushname = m.pushName || "No Name"
-const botNumber = await ElgazarBot.decodeJid(ElgazarBot.user.id)
+const botNumber = await Naruto Bot.decodeJid(ElgazarBot.user.id)
 const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const itsMe = m.sender == botNumber ? true : false
 const text = q = args.join(" ")
@@ -282,10 +282,10 @@ const hsjdh = randomNomor(5)
           /////}})
 
 //auto recording all
-    if (global.autoRecord) { if (m.chat) { ElgazarBot.sendPresenceUpdate('recording', m.chat) }
+    if (global.autoRecord) { if (m.chat) { NarutoBot.sendPresenceUpdate('recording', m.chat) }
 }
 //autotyper all
-  if (global.autoTyping) { if (m.chat) { ElgazarBot.sendPresenceUpdate('composing', m.chat) }
+  if (global.autoTyping) { if (m.chat) { narutoBot.sendPresenceUpdate('composing', m.chat) }
 }
 
 // total hit
@@ -863,13 +863,13 @@ ${isWin ? `@${winner.split('@')[0]} لقد فزت✨` : isTie ? `انتهت ال
 @${roof.p2.split`@`[0]}
 
 من فضلك اذهب الي شات البوت واختر منه https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] })
-	    if (!roof.pilih) ElgazarBot.sendText(roof.p, `من فضلك اختر \n\حجر🗿\nورقه📄\nمقص✂️`, m)
-	    if (!roof.pilih2) ElgazarBot.sendText(roof.p2, `من فضلك اختر \n\nحجر🗿\nورقه📄\nمقص✂️`, m)
+	    if (!roof.pilih) NarutoBot.sendText(roof.p, `من فضلك اختر \n\حجر🗿\nورقه📄\nمقص✂️`, m)
+	    if (!roof.pilih2) NarutoBot.sendText(roof.p2, `من فضلك اختر \n\nحجر🗿\nورقه📄\nمقص✂️`, m)
 	    roof.waktu_milih = setTimeout(() => {
 	    if (!roof.pilih && !roof.pilih2) ElgazarBot.sendText(m.chat, `لم يتم اختيار اي شئ'[ ⏳ ] انتهت المهلة، تم إلغاؤها بسبب عدم الاستجابة ,\nانتهت اللعبه`)
 	    else if (!roof.pilih || !roof.pilih2) {
 	    win = !roof.pilih ? roof.p2 : roof.p
-	    ElgazarBot.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} Didn't لعبه حجر ورقه, انتهت اللعبه`, m)
+	    NarutoBot.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} Didn't لعبه حجر ورقه, انتهت اللعبه`, m)
 	    }
 	    delete this.suit[roof.id]
 	    return !0
